@@ -10,10 +10,13 @@
           data+=k+':'+prop[k]+';'
         }
       }
+     }else if(prop=='rename' && arguments[2]!=undefined ){
+       fval=0;
+       newName=arguments[2];
      }else if(arguments[1]!=undefined){
        fval=2;
        data=arguments[0]+':'+arguments[1]
-     }else if(prop=='remove' || (prop=='rename' && newName=arguments[2]!=undefined)){
+     }else if(prop=='remove'){
        fval=0;
      } else{return 'error'}
      action=(arguments[fval]==undefined)?'add':arguments[fval];
@@ -34,8 +37,7 @@
         actNew()
         break;
       case 'rename':
-        actRemove()
-        actNew()
+        actRename()
         break;
      }
      function chData(){
